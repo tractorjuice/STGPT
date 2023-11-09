@@ -38,7 +38,6 @@ st.sidebar.title("Lección #1")
 st.sidebar.divider()
 st.sidebar.markdown("Por Pedro Aragón", unsafe_allow_html=True)
 st.sidebar.markdown("Asistente GPT")
-st.sidebar.markdown(st.session_state.session_id)
 st.sidebar.divider()
 
 if "assistant" not in st.session_state:
