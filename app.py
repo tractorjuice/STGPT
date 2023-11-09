@@ -33,12 +33,11 @@ if "messages" not in st.session_state:
 if "retry_error" not in st.session_state:
     st.session_state.retry_error = 0
 
-st.set_page_config(page_title="Learn Wardley Mapping")
-st.sidebar.title("Learn Wardley Mapping")
+st.set_page_config(page_title="Lección #1: El éxito en la innovación")
+st.sidebar.title("Lección #1")
 st.sidebar.divider()
-st.sidebar.markdown("Developed by Mark Craddock](https://twitter.com/mcraddock)", unsafe_allow_html=True)
-st.sidebar.markdown("Current Version: 0.0.3")
-st.sidebar.markdown("Using gpt-4-1106-preview API")
+st.sidebar.markdown("Por Pedro Aragón", unsafe_allow_html=True)
+st.sidebar.markdown("Asistente GPT")
 st.sidebar.markdown(st.session_state.session_id)
 st.sidebar.divider()
 
