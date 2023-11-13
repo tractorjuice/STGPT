@@ -52,8 +52,9 @@ if uploaded_file is not None:
         json_str = df.to_json(orient='records', indent=4)
         file_stream = io.BytesIO(json_str.encode())
 
-        # Upload JSON data to OpenAI
+        # Upload JSON data to OpenAI and store the file ID
         file_response = client.files.create(file=file_stream, purpose='answers')
+        st.session_state.file_id = file_response.id
         st.success("File uploaded successfully to OpenAI!")
 
         # Optional: Display and Download JSON
@@ -83,16 +84,22 @@ elif hasattr(st.session_state.run, 'status') and st.session_state.run.status == 
                     message_text = content_part.text.value
                     st.markdown(message_text)
 
-# Chat input
+# Chat input and message creation with file ID
 if prompt := st.chat_input("How can I help you?"):
     with st.chat_message('user'):
         st.write(prompt)
 
-    st.session_state.messages = client.beta.threads.messages.create(
-        thread_id=st.session_state.thread.id,
-        role="user",
-        content=prompt
-    )
+    message_data = {
+        "thread_id": st.session_state.thread.id,
+        "role": "user",
+        "content": prompt
+    }
+
+    # Include file ID in the request if available
+    if "file_id" in st.session_state:
+        message_data["file_ids"] = [st.session_state.file_id]
+
+    st.session_state.messages = client.beta.threads.messages.create(**message_data)
 
     st.session_state.run = client.beta.threads.runs.create(
         thread_id=st.session_state.thread.id,
