@@ -1,4 +1,4 @@
-# Importing required packages
+ # Importing required packages
 import streamlit as st
 import openai
 import uuid
@@ -27,11 +27,11 @@ if "retry_error" not in st.session_state:
     st.session_state.retry_error = 0
 
 # Set up the page
-st.set_page_config(page_title="Lección #1: El éxito en la innovación")
-st.sidebar.title("Lección #1")
+st.set_page_config(page_title="Enter title here")
+st.sidebar.title("Title")
 st.sidebar.divider()
-st.sidebar.markdown("Por Pedro Aragón", unsafe_allow_html=True)
-st.sidebar.markdown("Asistente GPT")
+st.sidebar.markdown("Your name", unsafe_allow_html=True)
+st.sidebar.markdown("Assistant GPT")
 st.sidebar.divider()
 
 # File uploader for CSV, XLS, XLSX
