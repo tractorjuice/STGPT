@@ -11,7 +11,9 @@ from openai import OpenAI
 client = OpenAI()
 
 # Your chosen model
-MODEL = "gpt-4-1106-preview"
+#MODEL = "gpt-3.5-turbo-16k" # Legacy
+MODEL = "gpt-3.5-turbo-1106" # Latest model
+#MODEL = "gpt-4-1106-preview"
 
 # Initialize session state variables
 if "session_id" not in st.session_state:
